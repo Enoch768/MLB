@@ -12,7 +12,7 @@ from decimal import Decimal
 
 def get_data() -> pd.DataFrame:       
     
-    file_path = 'data_and_models/mlb_model_ready_data_comb.csv'
+    file_path = '/content/MLB/data_and_models/mlb_model_ready_data_comb.csv'
     data = pd.read_csv(file_path)
     # column_names = ['HT_AT_DATE', 'DATE', 'HT', 'AT', 'HT_RF', 'AT_RF', 'HT_RA', 'AT_RA', 'HT_H', 'AT_H', 'HT_SC', 'AT_SC'] 
     # column_names (ELO) = ['HT_AT_DATE', 'DATE', 'HT', 'AT', 'HT_RF', 'AT_RF', 'HT_RA', 'AT_RA', 'HT_ELO', 'AT_ELO', 'HT_SC', 'AT_SC'] 
@@ -55,7 +55,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
     date_formatted = datetime.strptime(fixture['DATE'], '%Y-%m-%d')
     current_date = datetime.now().date()
 
-    current_team_stats = pd.read_excel('data_and_models/current_team_data.xlsx')
+    current_team_stats = pd.read_excel('/content/MLB/data_and_models/current_team_data.xlsx')
 
     home_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
     away_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
@@ -67,7 +67,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
 
     if date_formatted.date() < current_date:
         
-        file_path = 'data_and_models/mlb_model_ready_data_comb.xlsx'
+        file_path = '/content/MLB/data_and_models/mlb_model_ready_data_comb.xlsx'
         if not os.path.exists(file_path):
             print('Data needed, scrape it and store it in order to get input')
             input = 0
