@@ -16,7 +16,7 @@ def load_or_run_model(scalers:dict, X_scaled:np.ndarray, y_scaled:np.ndarray):
 
     X_train, X_test, y_train, y_test = train_test_split(X_scaled, y_scaled, test_size=0.2, random_state=42)
 
-    file_path = 'data_and_models/basic_model_comb.keras'
+    file_path = '/content/MLB/data_and_models/basic_model_comb.keras'
 
     if not os.path.exists(file_path):
         
