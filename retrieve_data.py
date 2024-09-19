@@ -67,7 +67,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
 
     if date_formatted.date() < current_date:
         
-        file_path = '/content/MLB/data_and_models/mlb_model_ready_data_comb.xlsx'
+        file_path = '/content/MLB/data_and_models/mlb_model_ready_data_comb.csv'
         if not os.path.exists(file_path):
             print('Data needed, scrape it and store it in order to get input')
             input = 0
