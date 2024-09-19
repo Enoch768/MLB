@@ -55,7 +55,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
     date_formatted = datetime.strptime(fixture['DATE'], '%Y-%m-%d')
     current_date = datetime.now().date()
 
-    current_team_stats = pd.read_excel('/content/MLB/data_and_models/current_team_data.xlsx')
+    current_team_stats = pd.read_excel('/content/MLB/data_and_models/current_team_data.csv')
 
     home_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
     away_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
