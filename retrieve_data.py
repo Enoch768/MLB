@@ -55,7 +55,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
     date_formatted = datetime.strptime(fixture['DATE'], '%Y-%m-%d')
     current_date = datetime.now().date()
 
-    current_team_stats = pd.read_excel('/content/MLB/data_and_models/current_team_data.csv')
+    current_team_stats = pd.read_excel('/content/MLB/data_and_models/current_team_data.xlsx')
 
     home_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
     away_abrv = current_team_stats[(current_team_stats['team'] == fixture['HT'])]['abrv'].values[0]
@@ -73,7 +73,7 @@ def prep_pred_input(fixture:dict, scalers:dict) -> np.array:
             input = 0
         else:
 
-            fixtures = pd.read_excel(file_path)
+            fixtures = pd.read_csv(file_path)
 
             try:
                 matching_input = fixtures[(fixtures['DATE'] == date_formatted) & (fixtures['HT'] == home_val) & (fixtures['AT'] == away_val)]
